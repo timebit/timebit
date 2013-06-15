@@ -1,0 +1,10 @@
+#add-button {
+    max-width: 460px;
+    margin: 0 auto;
+    height: 50px;
+}
+
+.logo, #add-form {
+    max-width: 460px;
+    margin: 10px auto;
+}

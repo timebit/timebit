@@ -8,7 +8,7 @@ if (!console || !console.log) {
 // Ugh, globals.
 var peerc;
 var myUserID;
-var mainRef = new Firebase("https://kix.firebaseio.com/gupshup/");
+var mainRef = new Firebase("https://timebit.firebaseio.com/timebit");
 
 // Shim Firefox & Chrome. Interop stuff.
 var makePC = null;
@@ -96,7 +96,7 @@ function prereqs() {
   adapter();
 
   // Ask user to login.
-  var name = prompt("Enter your username", "Guest" + Math.floor(Math.random()*100)+1);
+  var name = "Guest" + Math.floor(Math.random()*100)+1; //prompt("Enter your username", "Guest" + Math.floor(Math.random()*100)+1);
 
   // Set username & welcome.
   document.getElementById("username").innerHTML = name;

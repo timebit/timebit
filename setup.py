@@ -8,12 +8,11 @@ CHANGES = open(os.path.join(here, 'CHANGES.txt')).read()
 
 requires = [
     'pyramid',
-    'pyramid_debugtoolbar',
     'waitress',
     ]
 
 setup(name='timebit',
-      version='0.0',
+      version='0.1',
       description='timebit',
       long_description=README + '\n\n' + CHANGES,
       classifiers=[

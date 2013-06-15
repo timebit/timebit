@@ -1,6 +1,10 @@
+.installed.cfg
+.Python
 bin
+eggs
 develop-eggs
+include
+lib
 parts
 *.pyc
-.installed.cfg
 *egg-info

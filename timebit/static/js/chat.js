@@ -159,7 +159,7 @@ function newTimeBit(){
   timebit.set(
       {id: myUserID,
        name: $("#add-timebit input.name").val(),
-       name: $("#add-timebit input.email").val(),
+       email: $("#add-timebit input.email").val(),
        description: $("#add-timebit textarea").val(),
        duration: $("#add-timebit input.duration").val(),
        price: $("#add-timebit input.price").val(),
@@ -186,7 +186,6 @@ $("#incomingCall").on("hidden", function() {
 });
 
 function incomingOffer(offer, fromUser) {
-  alert('incoming');
   document.getElementById("incomingUser").innerHTML = atob(fromUser);
   document.getElementById("incomingAccept").onclick = function() {
     $("#incomingCall").modal("hide");

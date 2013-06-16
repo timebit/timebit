@@ -8,7 +8,7 @@ if (!console || !console.log) {
 // Ugh, globals.
 var peerc;
 var myUserID;
-var mainRef = new Firebase("https://timebit.firebaseio.com/timebit");
+var mainRef = new Firebase("https://timebit.firebaseio.com/");
 
 // Shim Firefox & Chrome. Interop stuff.
 var makePC = null;
@@ -83,6 +83,8 @@ function adapter() {
 
 $("#incomingCall").modal();
 $("#incomingCall").modal("hide");
+$("#add-timebit").modal();
+$("#add-timebit").modal("hide");
 
 function prereqs() {
   if (!navigator.mozGetUserMedia && !navigator.webkitGetUserMedia) {
@@ -96,37 +98,36 @@ function prereqs() {
   adapter();
 
   // Ask user to login.
-  var name = "Guest" + Math.floor(Math.random()*100)+1; //prompt("Enter your username", "Guest" + Math.floor(Math.random()*100)+1);
-
+  var name = "u" + Math.floor(Math.random()*10000)+1;
+  
   // Set username & welcome.
-  document.getElementById("username").innerHTML = name;
-  document.getElementById("welcome").style.display = "block";
+  //document.getElementById("username").innerHTML = name;
 
   myUserID = btoa(name);
   var userRef = mainRef.child(myUserID);
   var userSDP = userRef.child("sdp");
   var userICE = userRef.child("ice");
-  var userStatus = userRef.child("presence");
+  //var userStatus = userRef.child("presence");
 
   userSDP.onDisconnect().remove();
-  userStatus.onDisconnect().set(false);
 
   $(window).unload(function() {
     userSDP.set(null);
-    userStatus.set(false);
   });
-
-  // Now online.
-  userStatus.set(true);
-
+  
   mainRef.on("child_added", function(snapshot) {
+    console.warn('child added');
+    console.log(snapshot);
     var data = snapshot.val();
     if (data.presence) {
+      console.log(data);
       appendUser(snapshot.name());
     }
   });
 
   mainRef.on("child_changed", function(snapshot) {
+    console.warn('child changed');
+      
     var data = snapshot.val();
     if (data.presence) {
       removeUser(snapshot.name());
@@ -155,6 +156,32 @@ function prereqs() {
   });
 }
 
+function newTimeBit(){
+  var userRef = mainRef.child(myUserID);
+  var userStatus = userRef.child("presence");
+  var timebit = userRef.child("timebit");
+  
+  timebit.set(
+      {id: myUserID,
+       name: $("#add-timebit input.name").val(),
+       description: $("#add-timebit textarea").val(),
+       duration: $("#add-timebit input.duration").val(),
+       price: $("#add-timebit input.price").val(),
+       wallet: $("#add-timebit input.duration").val()
+       }
+  );
+  // Now online.
+  userStatus.set(true);
+  userStatus.onDisconnect().set(false);
+  $(window).unload(function() {
+    userStatus.set(false);
+  });
+
+  $("#add-timebit input").val('');
+  $("#add-timebit textarea").val('');
+  $("#add-timebit").modal("hide");
+}
+
 function error(msg) {
   document.getElementById("message").innerHTML = msg;
   document.getElementById("alert").style.display = "block";
@@ -165,6 +192,7 @@ $("#incomingCall").on("hidden", function() {
 });
 
 function incomingOffer(offer, fromUser) {
+  alert('incoming');
   document.getElementById("incomingUser").innerHTML = atob(fromUser);
   document.getElementById("incomingAccept").onclick = function() {
     $("#incomingCall").modal("hide");
@@ -183,7 +211,7 @@ function incomingAnswer(answer) {
 
 function log(info) {
   var d = document.getElementById("debug");
-  d.innerHTML += info + "\n\n";
+  //d.innerHTML += info + "\n\n";
 }
 
 function appendUser(userid) {

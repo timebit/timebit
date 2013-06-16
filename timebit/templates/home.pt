@@ -18,49 +18,61 @@
   </head>
 
   <body>
+     <div class="navbar navbar-inverse navbar-fixed-top">
+       <div class="navbar-inner">
+         <div class="container">
+           &nbsp;
+         </div>
+       </div>
+     </div>
 
     <div id="main" class="container">
 
       <div id="alert" class="alert alert-block alert-error" style="display:none;">
         <h4 class="alert-heading" id="message"></h4>
+          <span id="username"></span>
       </div>
 
       <div id="mainContainer">
-      <div id="welcome" class="hero-unit">
-          <span id="username"></span>
+      <div id="welcome">
           <div class="logo"><img src="static/img/logo.png" /></div>
-          <button type="button" id="add-button" class="btn btn-block btn-primary btn-large" data-toggle="collapse"
-            data-target="#add-form">Add timebit</button>
-          <div id="add-form" class="collapse">
+          <button type="button" id="add-button" class="btn btn-block btn-primary btn-large" 
+              onClick="$('#add-timebit').modal();" >Add timebit</button>
+      </div>
+      <div class="modal" id="add-timebit" tabindex="-1" role="dialog"
+           aria-labelledby="add-timebit" aria-hidden="true">
+        <div class="modal-header">
+          <h3>Add timebit</h3>
+        </div>   
+        <div id="add-form" class="modal-body">
             <form class="form-horizontal">
               <div class="control-group">
-                <input type="text" class="span12 name" placeholder="Name..." />
+                <input type="text" class="span6 name" placeholder="Name..." />
               </div>
               <div class="control-group">  
-                <textarea class="span12" placeholder="Description..."></textarea>
+                <textarea class="span6" placeholder="Description..."></textarea>
               </div>
               <div class="control-group">
-                <input class="span12 duration" id="duration" type="text" placeholder="Duration in minutes..." />
+                <input class="span6 duration" id="duration" type="text" placeholder="Duration in minutes..." />
               </div>
               <div class="control-group">    
-                <input class="span12 price" id="price" type="text" placeholder="Price in BTC...">
+                <input class="span6 price" id="price" type="text" placeholder="Price in BTC...">
               </div>
               <div class="control-group">
-                <input type="text" class="span12 wallet" placeholder="Bitcoin address..." />
-              </div>
-              <div class="control-group">
-                <div class="controls">
-                <button class="span3" type="submit" class="btn">Go</button>
-                </div>
-              </div>    
+                <input type="text" class="span6 wallet" placeholder="Bitcoin address..." />
+              </div>   
             </form>
-          </div>        
+        </div>      
+        <div class="modal-footer">
+            <a href="#" class="btn" data-dismiss="modal">Close</a>
+            <a href="#" class="btn btn-primary" onClick="newTimeBit()">Go!</a>
+        </div>           
       </div>
 
 
       <br/>
 
-      <div class="span2 well" id="users">
+      <div id="users">
       </div>
 
       <div class="modal" id="incomingCall" tabindex="-1" role="dialog"

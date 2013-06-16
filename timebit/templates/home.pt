@@ -31,7 +31,7 @@
           <button type="button" id="add-button" class="btn btn-block btn-primary btn-large">Add timebit</button>
       </div>
       <div class="modal" id="add-timebit" tabindex="-1" role="dialog"
-           aria-labelledby="add-timebit" aria-hidden="true">
+           aria-labelledby="add-timebit" aria-hidden="true" style="display: none;">
         <div class="modal-header">
           <h3>Add timebit</h3>
         </div>
@@ -70,7 +70,7 @@
       </div>
 
       <div class="modal" id="incomingCall" tabindex="-1" role="dialog"
-           aria-labelledby="incomingCall" aria-hidden="true">
+           aria-labelledby="incomingCall" aria-hidden="true" style="display: none;">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
           <h3>Incoming Call</h3>

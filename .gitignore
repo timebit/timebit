@@ -1,5 +1,6 @@
 .installed.cfg
 .Python
+.project
 bin
 eggs
 develop-eggs

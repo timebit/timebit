@@ -116,25 +116,20 @@ function prereqs() {
   });
 
   mainRef.on("child_added", function(snapshot) {
-    console.warn('child added');
-    console.log(snapshot);
     var data = snapshot.val();
     if (data.presence) {
-      console.log(data);
-      appendUser(snapshot.name());
+      appendTimebit(snapshot.name(), data.timebit);
     }
   });
 
-  mainRef.on("child_changed", function(snapshot) {
-    console.warn('child changed');
-
+  mainRef.on("child_changed", function(snapshot) {      
     var data = snapshot.val();
     if (data.presence) {
-      removeUser(snapshot.name());
-      appendUser(snapshot.name());
+      removeTimebit(snapshot.name(), data.timebit);
+      appendTimebit(snapshot.name(), data.timebit);
     }
     if (!data.presence) {
-      removeUser(snapshot.name());
+      removeTimebit(data.timebit);
     }
     if (data.sdp && data.sdp.to == myUserID) {
       if (data.sdp.type == "offer") {
@@ -213,22 +208,24 @@ function log(info) {
   //d.innerHTML += info + "\n\n";
 }
 
-function appendUser(userid) {
+function appendTimebit(userid, timebit){
+  console.log(timebit);
   if (userid == myUserID) return;
   var d = document.createElement("div");
-  d.setAttribute("id", userid);
+  d.setAttribute("id", timebit.id);
 
   var a = document.createElement("a");
-  a.setAttribute("class", "btn btn-block btn-inverse");
+
   a.setAttribute("onclick", "initiateCall('" + userid + "');");
-  a.innerHTML = "<i class='icon-user icon-white'></i> " + atob(userid);
+  a.innerHTML = "<div class='well'><img class='gravatar' src='http://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50' /><h3>" + timebit.name + "</h3>"
+                + "<div>" + timebit.description + "</div></div>";
 
   d.appendChild(a);
   d.appendChild(document.createElement("br"));
-  document.getElementById("users").appendChild(d);
+  document.getElementById("users").appendChild(d);    
 }
 
-function removeUser(userid) {
+function removeTimebit(userid, timebit){
   var d = document.getElementById(userid);
   if (d) {
     document.getElementById("users").removeChild(d);

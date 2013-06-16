@@ -8,3 +8,12 @@
     max-width: 460px;
     margin: 10px auto;
 }
+
+a:hover div {
+    text-decoration: none !important;
+}
+
+img.gravatar {
+    float: left;
+    margin-right: 20px;
+}

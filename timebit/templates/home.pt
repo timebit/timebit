@@ -28,8 +28,7 @@
       <div id="mainContainer">
       <div id="welcome">
           <div class="logo"><img src="static/img/logo.png" /></div>
-          <button type="button" id="add-button" class="btn btn-block btn-primary btn-large"
-              onClick="$('#add-timebit').modal();">Add timebit</button>
+          <button type="button" id="add-button" class="btn btn-block btn-primary btn-large">Add timebit</button>
       </div>
       <div class="modal" id="add-timebit" tabindex="-1" role="dialog"
            aria-labelledby="add-timebit" aria-hidden="true">

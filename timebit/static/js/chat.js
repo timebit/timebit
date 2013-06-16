@@ -178,8 +178,6 @@ function newTimeBit(){
     userStatus.set(false);
   });
 
-  $("#add-timebit input").val('');
-  $("#add-timebit textarea").val('');
   $("#add-timebit").modal("hide");
 }
 
@@ -363,6 +361,12 @@ function error(e) {
   }
   endCall();
 }
+
+$("#add-button").on("click", function(event) {
+  $("#add-timebit input").val('');
+  $("#add-timebit textarea").val('');
+  $('#add-timebit').modal();
+});
 
 prereqs();
 

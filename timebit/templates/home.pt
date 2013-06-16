@@ -42,6 +42,9 @@
                 <input type="text" class="name span4" placeholder="Name..." />
               </div>
               <div class="control-group">
+                <input type="text" class="email span4" placeholder="email..." />
+              </div>
+              <div class="control-group">
                 <textarea class="span4" placeholder="Description..."></textarea>
               </div>
               <div class="control-group">

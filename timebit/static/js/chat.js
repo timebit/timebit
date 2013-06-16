@@ -18,7 +18,7 @@ var RTCPeerConnection = null;
 var attachMediaStream = null;
 var mediaConstraints = {
   "mandatory": {
-    "OfferToReceiveAudio":true, 
+    "OfferToReceiveAudio":true,
     "OfferToReceiveVideo":true
   }
 };
@@ -40,7 +40,7 @@ function ensureCryptoLine(sdp) {
     sdpLinesOut.push(sdpLinesIn[i]);
     if (sdpLinesIn[i].search('m=') !== -1) {
       sdpLinesOut.push("a=crypto:1 AES_CM_128_HMAC_SHA1_80 inline:AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
-    } 
+    }
   }
 
   sdp = sdpLinesOut.join('\r\n');
@@ -99,7 +99,7 @@ function prereqs() {
 
   // Ask user to login.
   var name = "u" + Math.floor(Math.random()*10000)+1;
-  
+
   // Set username & welcome.
   //document.getElementById("username").innerHTML = name;
 
@@ -114,7 +114,7 @@ function prereqs() {
   $(window).unload(function() {
     userSDP.set(null);
   });
-  
+
   mainRef.on("child_added", function(snapshot) {
     console.warn('child added');
     console.log(snapshot);
@@ -127,7 +127,7 @@ function prereqs() {
 
   mainRef.on("child_changed", function(snapshot) {
     console.warn('child changed');
-      
+
     var data = snapshot.val();
     if (data.presence) {
       removeUser(snapshot.name());
@@ -160,10 +160,11 @@ function newTimeBit(){
   var userRef = mainRef.child(myUserID);
   var userStatus = userRef.child("presence");
   var timebit = userRef.child("timebit");
-  
+
   timebit.set(
       {id: myUserID,
        name: $("#add-timebit input.name").val(),
+       name: $("#add-timebit input.email").val(),
        description: $("#add-timebit textarea").val(),
        duration: $("#add-timebit input.duration").val(),
        price: $("#add-timebit input.price").val(),

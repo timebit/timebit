@@ -129,7 +129,7 @@ function prereqs() {
       appendTimebit(snapshot.name(), data.timebit);
     }
     if (!data.presence) {
-      removeTimebit(data.timebit);
+      removeTimebit(snapshot.name(), data.timebit);
     }
     if (data.sdp && data.sdp.to == myUserID) {
       if (data.sdp.type == "offer") {
@@ -225,6 +225,7 @@ function appendTimebit(userid, timebit){
 }
 
 function removeTimebit(userid, timebit){
+  console.log('removing ' + userid);
   var d = document.getElementById(userid);
   if (d) {
     document.getElementById("users").removeChild(d);

@@ -3,7 +3,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Timebit.io</title>
+    <title>timebit.io</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Exchange expertise with bitcoins over WebRTC">
     <meta name="author" content="timebit.io">
@@ -36,37 +36,37 @@
       <div id="mainContainer">
       <div id="welcome">
           <div class="logo"><img src="static/img/logo.png" /></div>
-          <button type="button" id="add-button" class="btn btn-block btn-primary btn-large" 
+          <button type="button" id="add-button" class="btn btn-block btn-primary btn-large"
               onClick="$('#add-timebit').modal();" >Add timebit</button>
       </div>
       <div class="modal" id="add-timebit" tabindex="-1" role="dialog"
            aria-labelledby="add-timebit" aria-hidden="true">
         <div class="modal-header">
           <h3>Add timebit</h3>
-        </div>   
+        </div>
         <div id="add-form" class="modal-body">
             <form class="form-horizontal">
               <div class="control-group">
-                <input type="text" class="span6 name" placeholder="Name..." />
-              </div>
-              <div class="control-group">  
-                <textarea class="span6" placeholder="Description..."></textarea>
+                <input type="text" class="name span4" placeholder="Name..." />
               </div>
               <div class="control-group">
-                <input class="span6 duration" id="duration" type="text" placeholder="Duration in minutes..." />
-              </div>
-              <div class="control-group">    
-                <input class="span6 price" id="price" type="text" placeholder="Price in BTC...">
+                <textarea class="span4" placeholder="Description..."></textarea>
               </div>
               <div class="control-group">
-                <input type="text" class="span6 wallet" placeholder="Bitcoin address..." />
-              </div>   
+                <input class="duration span4" id="duration" type="text" placeholder="Duration in minutes..." />
+              </div>
+              <div class="control-group">
+                <input class="price span4" id="price" type="text" placeholder="Price in BTC...">
+              </div>
+              <div class="control-group">
+                <input type="text" class="wallet span4" placeholder="Bitcoin address..." />
+              </div>
             </form>
-        </div>      
+        </div>
         <div class="modal-footer">
             <a href="#" class="btn" data-dismiss="modal">Close</a>
             <a href="#" class="btn btn-primary" onClick="newTimeBit()">Go!</a>
-        </div>           
+        </div>
       </div>
 
 
